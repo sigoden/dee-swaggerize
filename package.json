@@ -1,6 +1,6 @@
 {
   "name": "@sigodenh/dee-swaggerize",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "swagger document driven route builder for dee framework",
   "main": "./src/index.js",
   "scripts": {
@@ -25,6 +25,9 @@
     ],
     "testEnvironment": "node"
   },
+  "files": [
+    "src"
+  ],
   "prettier": {
     "singleQuote": true
   },
@@ -37,5 +40,16 @@
     "jest": "^23.1.0",
     "prettier": "^1.13.5",
     "supertest": "^3.1.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sigoden/dee-swaggerize.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sigoden/dee-swaggerize/issues"
+  },
+  "homepage": "https://github.com/sigoden/dee-swaggerize#readme"
 }
