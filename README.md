@@ -26,6 +26,5 @@ swaggerize(app, {
     routeIteratee: function(route) {
         return route;
     }
-
 });
 ```
