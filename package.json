@@ -1,5 +1,5 @@
 {
-  "name": "dee-swaggerize",
+  "name": "@sigodenh/dee-swaggerize",
   "version": "0.1.0",
   "description": "swagger document driven route builder for dee framework",
   "main": "./src/index.js",
