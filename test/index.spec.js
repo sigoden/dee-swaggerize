@@ -81,6 +81,31 @@ describe('swaggerize', function() {
   });
 });
 
+test('req.route access route generated from swagger object', function(done) {
+  var app = express();
+
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded());
+
+  var options = {
+    api: require('./fixtures/defs/pets.json'),
+    handlers: {
+      findPets: function(req, res) {
+        res.json({ name: req.route.name });
+      }
+    }
+  };
+  swaggerize(app, options);
+
+  request(app)
+    .get('/v1/petstore/pets')
+    .end(function(error, response) {
+      expect(error).toBeNull();
+      expect(response.body.name).toBe('findPets');
+      done();
+    });
+});
+
 describe('input validation', function() {
   var app = express();
 
@@ -172,31 +197,3 @@ describe('input validation', function() {
       });
   });
 });
-
-// test('yaml support', function(t) {
-//   var app = express();
-
-//   t.test('api as yaml', function(t) {
-//     t.plan(1);
-
-//     t.doesNotThrow(function() {
-//       app.use(
-//         swaggerize({
-//           api: path.join(__dirname, './fixtures/defs/pets.yaml'),
-//           handlers: path.join(__dirname, 'fixtures/handlers')
-//         })
-//       );
-//     });
-//   });
-
-//   t.test('get /pets', function(t) {
-//     t.plan(2);
-
-//     request(app)
-//       .get('/v1/petstore/pets')
-//       .end(function(error, response) {
-//         t.ok(!error, 'no error.');
-//         t.strictEqual(response.statusCode, 200, '200 status.');
-//       });
-//   });
-// });

@@ -161,6 +161,11 @@ function makeExpressRoute(router, mountpath, route, securityDefinitions) {
   args = [path];
   before = [];
 
+  before.push(function(req, res, next) {
+    req.route = route;
+    next();
+  });
+
   if (route.security) {
     before.push(authorizeFor(route.security, securityDefinitions));
   }
