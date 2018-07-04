@@ -18,10 +18,6 @@ swaggerize(app, {
     handlers: require('./handlers'),
     // 安全控制函数，是一个对象，其每个属性对应一个安全验证操作。
     security: require('./security'),
-    // 默认处理器函数, 找不到接口处理器函数时使用
-    defaultHandler: function(req, res, next) {
-        res.status(404);
-    },
     // 处理解析出的 Route 对象
     routeIteratee: function(route) {
         return route;
