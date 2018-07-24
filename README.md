@@ -3,7 +3,7 @@ Dee-swaggerize
 ## Usage
 
 ```js
-var swaggerize = require('@sigodenh/dee-swaggerize');
+var swaggerize = require('@sigodenjs/dee-swaggerize');
 var express = require('express');
 var bodyParser = require('body-parser');
 
