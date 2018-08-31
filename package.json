@@ -1,6 +1,6 @@
 {
   "name": "@sigodenjs/dee-swaggerize",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "description": "swagger document driven route builder for dee framework",
   "main": "./src/index.js",
   "scripts": {
@@ -28,7 +28,9 @@
     "testEnvironment": "node"
   },
   "files": [
-    "src"
+    "src",
+    "index.d.ts",
+    "tsconfig.json"
   ],
   "prettier": {
     "singleQuote": true

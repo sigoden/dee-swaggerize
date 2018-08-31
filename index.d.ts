@@ -22,11 +22,11 @@ interface Map<T> {
   [key: string]: T;
 }
 
-interface RequestWithRoute extends Request {
+export interface RequestWithRoute extends Request {
   route: Route;
 }
 
-interface Route {
+export interface Route {
   path: string;
   name: string;
   description: string;
@@ -38,6 +38,10 @@ interface Route {
   produces: string;
 }
 
-type HandlerFunc = (req: Request, res: RequestWithRoute, next: NextFunction) => void;
+type HandlerFunc = (
+  req: Request,
+  res: RequestWithRoute,
+  next: NextFunction
+) => void;
 
-export = swaggerize;
+export default swaggerize;
