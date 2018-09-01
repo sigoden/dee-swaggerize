@@ -12,7 +12,7 @@ var app = express();
 app.use(bodyParser.json());
 
 swaggerize(app, {
-    // swagger 对象
+    // swagger 对象或路径
     api: require('./fixtures/defs/pets.json'),
     // 处理器函数，是一个对象，其每个属性对应一个接口操作。
     handlers: require('./handlers'),

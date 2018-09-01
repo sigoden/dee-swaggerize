@@ -81,7 +81,7 @@ describe('swaggerize', function() {
   });
 });
 
-test('req.route access route generated from swagger object', function(done) {
+test('req.swagRoute access route generated from swagger object', function(done) {
   var app = express();
 
   app.use(bodyParser.json());
@@ -91,7 +91,7 @@ test('req.route access route generated from swagger object', function(done) {
     api: require('./fixtures/defs/pets.json'),
     handlers: {
       findPets: function(req, res) {
-        res.json({ name: req.route.name });
+        res.json({ name: req.swagRoute.name });
       }
     }
   };

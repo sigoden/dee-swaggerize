@@ -2,28 +2,33 @@ import {
   Express,
   Request,
   Response,
-  NextFunction
+  NextFunction,
+  RequestHandler
 } from 'express-serve-static-core';
 
-declare function swaggerize(app: Express, options: SwaggerizeOptions);
+declare function swaggerize(app: Express, options: SwaggerizeOptions): void;
 
-interface SwaggerizeOptions {
-  // swagger spec doc
-  api: object;
+export interface SwaggerizeOptions {
+  // swagger spec doc or path to swagger file
+  api: object | string;
   // handler funcs
-  handlers: Map<HandlerFunc>;
+  handlers: HandlerFuncMap;
   // security funcs
-  security: Map<HandlerFunc>;
+  security: HandlerFuncMap;
   // map routes
   routeIteratee: (route: Route) => Route;
 }
 
-interface Map<T> {
-  [key: string]: T;
+declare global {
+  namespace Express {
+    export interface Request {
+      swagRoute: Route;
+    }
+  }
 }
 
-export interface RequestWithRoute extends Request {
-  route: Route;
+export interface HandlerFuncMap {
+  [k: string]: RequestHandler;
 }
 
 export interface Route {
@@ -32,16 +37,10 @@ export interface Route {
   description: string;
   method: string;
   security: object;
-  validators: object[];
-  handler?: HandlerFunc;
+  validators: Array<object>;
+  handler?: RequestHandler;
   consumes: string;
   produces: string;
 }
-
-type HandlerFunc = (
-  req: Request,
-  res: RequestWithRoute,
-  next: NextFunction
-) => void;
 
 export default swaggerize;

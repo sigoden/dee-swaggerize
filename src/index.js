@@ -1,10 +1,10 @@
 'use strict';
 
 var async = require('async'),
-  path = require('path'),
   thing = require('core-util-is'),
   utils = require('./utils'),
   buildRoutes = require('./build-routes'),
+  loadSwagger = require('./load-swagger'),
   pathRegexp = require('path-to-regexp');
 
 /**
@@ -18,12 +18,14 @@ function swaggerize(router, options) {
     routePath,
     routesMethod = {};
 
+  let api = loadSwagger(options.api);
+  options.api = api;
   routes = buildRoutes(options) || [];
-  options.api.basePath = utils.prefix(options.api.basePath || '/', '/');
-  mountpath = utils.unsuffix(options.api.basePath, '/');
+  api.basePath = utils.prefix(api.basePath || '/', '/');
+  mountpath = utils.unsuffix(api.basePath, '/');
 
   routes.forEach(function(route) {
-    makeExpressRoute(router, mountpath, route, options.api.securityDefinitions);
+    makeExpressRoute(router, mountpath, route, api.securityDefinitions);
     routePath = buildRoutePath(mountpath, route.path);
     routesMethod[routePath] = routesMethod[routePath] || [];
     routesMethod[routePath].push(route.method.toLowerCase());
@@ -162,7 +164,7 @@ function makeExpressRoute(router, mountpath, route, securityDefinitions) {
   before = [];
 
   before.push(function(req, res, next) {
-    req.route = route;
+    req.swagRoute = route;
     next();
   });
 
