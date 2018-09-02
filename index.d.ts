@@ -7,7 +7,7 @@ import {
 } from 'express-serve-static-core';
 import { Spec } from 'swagger-schema-official'
 
-export function swaggerize(app: Express, options: SwaggerizeOptions): void;
+export default function swaggerize(app: Express, options: SwaggerizeOptions): void;
 
 export interface SwaggerizeOptions {
   // swagger spec doc or path to swagger file
