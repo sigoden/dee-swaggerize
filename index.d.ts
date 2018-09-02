@@ -5,18 +5,19 @@ import {
   NextFunction,
   RequestHandler
 } from 'express-serve-static-core';
+import { Spec } from 'swagger-schema-official'
 
-declare function swaggerize(app: Express, options: SwaggerizeOptions): void;
+export function swaggerize(app: Express, options: SwaggerizeOptions): void;
 
 export interface SwaggerizeOptions {
   // swagger spec doc or path to swagger file
-  api: object | string;
+  api: Spec | string;
   // handler funcs
-  handlers: HandlerFuncMap;
+  handlers?: HandlerFuncMap;
   // security funcs
-  security: HandlerFuncMap;
+  security?: HandlerFuncMap;
   // map routes
-  routeIteratee: (route: Route) => Route;
+  routeIteratee?: (route: Route) => Route;
 }
 
 declare global {
@@ -42,5 +43,3 @@ export interface Route {
   consumes: string;
   produces: string;
 }
-
-export default swaggerize;

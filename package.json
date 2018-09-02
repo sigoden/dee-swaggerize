@@ -1,6 +1,6 @@
 {
   "name": "@sigodenjs/dee-swaggerize",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "swagger document driven route builder for dee framework",
   "main": "./src/index.js",
   "scripts": {
@@ -10,8 +10,6 @@
   "author": "Sigoden Huang <sigoden@gmail.com> (https://sigoden.com/)",
   "license": "MIT",
   "dependencies": {
-    "@types/express-serve-static-core": "^4.16.0",
-    "@types/node": "^10.9.4",
     "async": "^2.6.1",
     "core-util-is": "^1.0.2",
     "debuglog": "^1.0.1",
@@ -30,13 +28,15 @@
   },
   "files": [
     "src",
-    "index.d.ts",
-    "tsconfig.json"
+    "index.d.ts"
   ],
   "prettier": {
     "singleQuote": true
   },
   "devDependencies": {
+    "@types/express-serve-static-core": "^4.16.0",
+    "@types/node": "^10.9.4",
+    "@types/swagger-schema-official": "^2.0.10",
     "body-parser": "^1.18.3",
     "eslint": "^4.19.1",
     "eslint-plugin-jest": "^21.17.0",
