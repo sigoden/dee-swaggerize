@@ -1,6 +1,6 @@
 {
   "name": "@sigodenjs/dee-swaggerize",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "swagger document driven route builder for dee framework",
   "main": "./src/index.js",
   "scripts": {
