@@ -9,7 +9,7 @@ import { Spec } from 'swagger-schema-official';
 
 declare function swaggerize(
   app: Express,
-  options: swaggerize.SwaggerizeOptions
+  options: swaggerize.Options
 ): void;
 
 declare namespace swaggerize {
@@ -29,7 +29,7 @@ declare namespace swaggerize {
     produces: string;
   }
 
-  interface SwaggerizeOptions {
+  interface Options {
     // swagger spec doc or path to swagger file
     api: Spec | string;
     // handler funcs
