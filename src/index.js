@@ -4,7 +4,7 @@ var async = require('async'),
   thing = require('core-util-is'),
   utils = require('./utils'),
   buildRoutes = require('./build-routes'),
-  loadSwagger = require('./load-swagger'),
+  loadSwagger = require('./load-swag'),
   pathRegexp = require('path-to-regexp');
 
 /**

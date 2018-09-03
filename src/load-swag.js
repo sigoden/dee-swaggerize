@@ -1,8 +1,9 @@
-var path = require('path');
-var fs = require('fs');
-var yaml = require('js-yaml');
+'use strict';
+var path = require('path'),
+  fs = require('fs'),
+  yaml = require('js-yaml');
 
-function loadSwagger(api, cb) {
+function loadSwagger(api) {
   if (typeof api === 'object') return api;
   var swaggerFile = path.resolve(api);
   var data = fs.readFileSync(swaggerFile, 'utf8');
@@ -14,11 +15,9 @@ function loadSwagger(api, cb) {
       result = yaml.safeLoad(data);
     }
   } catch (err) {
-    return cb(
-      new Error('parse file ' + swaggerFile + ' failed, ' + err.message)
-    );
+    new Error('parse file ' + swaggerFile + ' failed, ' + err.message);
   }
-  return cb(null, result);
+  return result;
 }
 
 module.exports = loadSwagger;
